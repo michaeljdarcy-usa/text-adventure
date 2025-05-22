@@ -28,21 +28,23 @@ int main()
     std::cin >> choice; // Store the user's input in choice
 
     // Check the user's choice and display the corresponding messages
-    if (choice == 1)
+    switch(choice)
     {
-        std::cout << "You chose Moonlight Markets!" << std::endl;
-    }
-    else if (choice == 2)
-    {
-        std::cout << "You chose Grand Library!" << std::endl;
-    }
-    else if (choice == 3)
-    {
-        std::cout << "You chose Shimmer Lake!" << std::endl;
-    }
-    else
-    {
-        std::cout << "Invalid choice." << std::endl;
+        // If 'choice' is 1, this block is executed.
+        case 1:
+            std::cout << "You chose Moonlight Markets!" << std::endl;
+            break;
+        // If 'choice' is 2, this block is executed.
+        case 2:
+            std::cout << "You chose Grand Library!" << std::endl;
+            break;
+        // If 'choice' is 3, this block is executed.
+        case 3:
+            std::cout << "You chose Shimmer Lake!" << std::endl;
+            break;
+        // If 'choice' is not 1, 2, or 3, this block is executed.
+        default:
+            std::cout << "You did not enter 1, 2, or 3." << std::endl;
     }
 
     // Return 0 to indicate successful completion to operating sytem
