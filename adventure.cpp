@@ -19,34 +19,63 @@ int main()
     // Declare an int variable to capture the user's choice
     int choice{};
 
-    // Offer the player a choice of 3 locations
-    std::cout << "Where will " << playerName << " go?" << std::endl;
-    std::cout << "1. Moonlight Markets" << std::endl;
-    std::cout << "2. Grand Library" << std::endl;
-    std::cout << "3. Shimmer Lake" << std::endl;
-    std::cout << "Please enter your choice: " << std::endl;
-    std::cin >> choice; // Store the user's input in choice
+    // Declare an int variable to capture the user's nested choice
+    int nestedChoice{};
 
-    // Check the user's choice and display the corresponding messages
-    switch(choice)
+    // Initialize a flag to control the loop and signify the player's intent to explore
+    bool exploring = true;
+
+    // As long as the player wishes to continue exploring, this loop will run
+    while (exploring) 
     {
-        // If 'choice' is 1, this block is executed.
-        case 1:
-            std::cout << "You chose Moonlight Markets!" << std::endl;
-            break;
-        // If 'choice' is 2, this block is executed.
-        case 2:
-            std::cout << "You chose Grand Library!" << std::endl;
-            break;
-        // If 'choice' is 3, this block is executed.
-        case 3:
-            std::cout << "You chose Shimmer Lake!" << std::endl;
-            break;
-        // If 'choice' is not 1, 2, or 3, this block is executed.
-        default:
-            std::cout << "You did not enter 1, 2, or 3." << std::endl;
-    }
+        // If still exploring, ask the player will they will go next
+        std::cout << "Where will " << playerName << " go next?" << std::endl;
 
+        // Offer the player a choice of 3 locations
+        std::cout << "Where will " << playerName << " go?" << std::endl;
+        std::cout << "1. Moonlight Markets" << std::endl;
+        std::cout << "2. Grand Library" << std::endl;
+        std::cout << "3. Shimmer Lake" << std::endl;
+        std::cout << "Please enter your choice: " << std::endl;
+        std::cin >> choice; // Store the user's input in choice
+
+        // Check the user's choice and display the corresponding messages
+        switch(choice)
+        {   
+            // If 'choice' is 1, this block is executed.
+            case 1:
+                std::cout << "You chose Moonlight Markets!" << std::endl;
+                break;
+            // If 'choice' is 2, this block is executed.
+            case 2:
+                std::cout << "You chose Grand Library!" << std::endl;
+                break;
+            // If 'choice' is 3, this block is executed.
+            case 3:
+                std::cout << playerName << " arrives at Shimmering Lake. It is one of the most beautiful lakes that " << playerName << " has seen. They hear a myterious melody from the water.They can either: " << std::endl; 
+                std::cout << "1. Stay quit and listen." << std::endl;
+                std::cout << "2. Sing along with the melody." << std::endl;
+                std::cout << "Please enter your choice:" << std::endl;
+
+                // Capture the user's nested choice
+                std::cin >> nestedChoice;
+
+                // If the player chooses to remain silent.
+                if (nestedChoice == 1)
+                {
+                    std::cout << "Remaining silent, " << playerName << " hears whispers of the merfolk below, but nothing happens." << std::endl;
+                }
+                // If the player chooses to sing along with the melody.
+                else if (nestedChoice == 2)
+                {
+                    std::cout << "Singing along, a merfolk surfaces and gifts " << playerName << " a special blue gem as a token of appreciation for their voice." << std::endl;
+                }
+                break;
+                // If 'choice' is not 1, 2, or 3, this block is executed.
+                default:
+                    std::cout << "You did not enter 1, 2, or 3." << std::endl;
+        }
+    }
     // Return 0 to indicate successful completion to operating sytem
     return 0;
 }
