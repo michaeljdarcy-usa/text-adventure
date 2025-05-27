@@ -1,20 +1,33 @@
 #include <iostream> // Include the I/O stream library for input and output
 
+struct Player
+{
+    std::string name; // The name of the player
+    int health;       // The current health of the player
+    int xp;           // Experience points gained by the player. Could be used for leveling up  or for other game mechanics
+};
+
 // The starting point of the program
 int main()
 {
     // Print, "Hello, world!" to the console
     std::cout << "Welcome to the Dragon Realm!" << std::endl;
 
+    // Create an instance of the Player struct
+    Player player;
+    player.name   = "John";
+    player.health = 100;
+    
+
     // Declare a string variable to hold the player's name
-    std::string playerName;
+    // std::string playerName;
 
     // Prompt the player for their name
     std::cout << "Please enter your name: ";
-    std::cin >> playerName;
+    std::cin >> player.name;
 
     // Display a personalized welcome message to the player with their name
-    std::cout << "Welcome " << playerName << " to the Dragon Realm!" << std::endl;
+    std::cout << "Welcome " << player.name << " to the Dragon Realm!" << std::endl;
 
     // Declare an int variable to capture the user's choice
     int choice{};
@@ -29,10 +42,10 @@ int main()
     while (exploring) 
     {
         // If still exploring, ask the player will they will go next
-        std::cout << "Where will " << playerName << " go next?" << std::endl;
+        std::cout << "Where will " << player.name << " go next?" << std::endl;
 
         // Offer the player a choice of 3 locations
-        std::cout << "Where will " << playerName << " go?" << std::endl;
+        std::cout << "Where will " << player.name << " go?" << std::endl;
         std::cout << "1. Moonlight Markets" << std::endl;
         std::cout << "2. Grand Library" << std::endl;
         std::cout << "3. Shimmer Lake" << std::endl;
@@ -52,7 +65,7 @@ int main()
                 break;
             // If 'choice' is 3, this block is executed.
             case 3:
-                std::cout << playerName << " arrives at Shimmering Lake. It is one of the most beautiful lakes that " << playerName << " has seen. They hear a myterious melody from the water.They can either: " << std::endl; 
+                std::cout << player.name << " arrives at Shimmering Lake. It is one of the most beautiful lakes that " << player.name << " has seen. They hear a myterious melody from the water.They can either: " << std::endl; 
                 std::cout << "1. Stay quit and listen." << std::endl;
                 std::cout << "2. Sing along with the melody." << std::endl;
                 std::cout << "Please enter your choice:" << std::endl;
@@ -63,17 +76,21 @@ int main()
                 // If the player chooses to remain silent.
                 if (nestedChoice == 1)
                 {
-                    std::cout << "Remaining silent, " << playerName << " hears whispers of the merfolk below, but nothing happens." << std::endl;
+                    std::cout << "Remaining silent, " << player.name << " hears whispers of the merfolk below, but nothing happens." << std::endl;
                 }
                 // If the player chooses to sing along with the melody.
                 else if (nestedChoice == 2)
                 {
-                    std::cout << "Singing along, a merfolk surfaces and gifts " << playerName << " a special blue gem as a token of appreciation for their voice." << std::endl;
+                    std::cout << "Singing along, a merfolk surfaces and gifts " << player.name << " a special blue gem as a token of appreciation for their voice." << std::endl;
                 }
                 break;
                 // If 'choice' is not 1, 2, or 3, this block is executed.
-                default:
-                    std::cout << "You did not enter 1, 2, or 3." << std::endl;
+            case 4:
+                exploring = false;
+                break;
+            default:
+                std::cout << "You did not enter a valid choice" << std::endl; 
+                continue; // Errors continue with the next loop iteration
         }
     }
     // Return 0 to indicate successful completion to operating sytem
