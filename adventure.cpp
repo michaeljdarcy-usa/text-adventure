@@ -2,9 +2,11 @@
 
 struct Player
 {
-    std::string name; // The name of the player
-    int health;       // The current health of the player
-    int xp;           // Experience points gained by the player. Could be used for leveling up  or for other game mechanics
+    std::string name;          // The name of the player
+    int health;                // The current health of the player
+    int xp;                    // Experience points gained by the player. Could be used for leveling up  or for other game mechanics
+    std::string inventory[10]; // An array of strings for the player's inventory
+    int inventoryCount{};      // The number of items in the inventory
 };
 
 // The starting point of the program
@@ -82,6 +84,19 @@ int main()
                 else if (nestedChoice == 2)
                 {
                     std::cout << "Singing along, a merfolk surfaces and gifts " << player.name << " a special blue gem as a token of appreciation for their voice." << std::endl;
+                    player.inventory[player.inventoryCount] = "Blue gem";
+                    player.inventoryCount++;
+                    std::cout << player.name << "'s inventory:" << std::endl;
+                    // Loop through the player's inventory up to the amount of items they have
+                    for (int i = 0; i < player.inventoryCount; i++)
+                    {
+                        // Check if the inventory slot is not empty
+                        if (!player.inventory[i].empty())
+                        {
+                            // Output the item in the inventory slot
+                            std::cout << "- " << player.inventory[i] << std::endl;
+                        } 
+                    }
                 }
                 break;
                 // If 'choice' is not 1, 2, or 3, this block is executed.
